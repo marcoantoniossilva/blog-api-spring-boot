@@ -36,7 +36,7 @@ passando um corpo contendo email e senha com o abaixo:<br>
   ```JSON
   {
   "email": "user@mail.com",
-  "password": "password123456"
+  "password": "password12345"
 }
   ```
 
@@ -50,7 +50,7 @@ O retorno será algo como:<br>
 }
 ```
 O token retornado no corpo da resposta deverá ser passado no cabeçalho "Authorization" precedido do sufixo "Bearer "
-em todas as outras requisições<br>
+em todas as outras requisições, com exceção do endpoint de criação de usuários (POST /users)<br>
 
 ## Usuário padrão
 
