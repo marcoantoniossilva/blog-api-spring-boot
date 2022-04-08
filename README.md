@@ -54,7 +54,7 @@ em todas as outras requisições, com exceção do endpoint de criação de usu�
 
 ## Usuário padrão
 
-Para logar inicialmente na API, existe um usuário criado com o email "user@mail.com e senha "password12345".<br>
+Para logar inicialmente na API, existe um usuário criado com o email "user@mail.com" e senha "password12345".<br>
 
 ## Documentação
 
