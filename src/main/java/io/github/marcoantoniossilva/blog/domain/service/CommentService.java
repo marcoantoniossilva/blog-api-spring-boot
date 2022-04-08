@@ -46,7 +46,6 @@ public class CommentService {
         .findById(comment.getPost().getId())
         .orElseThrow(() -> new ResourceNotFound("Postagem não encontrada!"));
 
-
     comment.setUser(SecurityUtils.getLoggedUser());
     comment.setPost(post);
 

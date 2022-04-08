@@ -8,7 +8,11 @@ import io.github.marcoantoniossilva.blog.domain.model.Image;
 import io.github.marcoantoniossilva.blog.domain.model.Post;
 import io.github.marcoantoniossilva.blog.domain.service.ImageService;
 import io.github.marcoantoniossilva.blog.domain.service.PostService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
+
 public class PostController {
 
   private final PostService postService;
@@ -29,7 +34,6 @@ public class PostController {
     this.imageService = imageService;
     this.imageAssembler = imageAssembler;
   }
-
 
   @GetMapping
   public List<PostDTO> list() {
@@ -46,7 +50,9 @@ public class PostController {
         .orElse(ResponseEntity.notFound().build());
   }
 
-  @PostMapping
+  @PostMapping(
+      consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
   public PostDTO add(@ModelAttribute PostInputDTO postInputDTO) {
     Post post = postAssembler.dtoToEntity(postInputDTO);
