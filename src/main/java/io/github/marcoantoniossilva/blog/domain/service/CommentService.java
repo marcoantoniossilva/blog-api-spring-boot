@@ -33,7 +33,11 @@ public class CommentService {
   }
 
   public List<Comment> findAllByPostId(Long postId) {
-    return commentRepository.findAllByPostId(postId);
+    List<Comment> allCommentsByPostId = commentRepository.findAllByPostId(postId);
+    if (allCommentsByPostId.isEmpty()) {
+      throw new ResourceNotFound("Postagem não encontrada!");
+    }
+    return allCommentsByPostId;
   }
 
   @Transactional

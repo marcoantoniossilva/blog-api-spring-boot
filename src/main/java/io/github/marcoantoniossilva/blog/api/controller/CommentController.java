@@ -40,6 +40,7 @@ public class CommentController {
 
   @GetMapping("bypost/{postId}")
   public List<CommentDTO> byPost(@PathVariable Long postId) {
+
     return commentService.findAllByPostId(postId).stream()
         .map(commentAssembler::entityToDTO)
         .collect(Collectors.toList());
