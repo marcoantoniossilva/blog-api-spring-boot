@@ -1,0 +1,1 @@
+INSERT INTO public.users(id, name, email, password) VALUES (1, 'User Silva', 'user@mail.com', '3700adf1f25fab8202c1343c4b0b4e3fec706d57cad574086467b8b3ddf273ec');
