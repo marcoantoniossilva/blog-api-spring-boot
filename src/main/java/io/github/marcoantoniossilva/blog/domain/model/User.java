@@ -1,6 +1,7 @@
 package io.github.marcoantoniossilva.blog.domain.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -10,7 +11,7 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
-  private String login;
+  private String email;
   private String password;
 
   public User() {
@@ -32,12 +33,12 @@ public class User {
     this.name = name;
   }
 
-  public String getLogin() {
-    return login;
+  public String getEmail() {
+    return email;
   }
 
-  public void setLogin(String login) {
-    this.login = login;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getPassword() {
@@ -49,11 +50,16 @@ public class User {
   }
 
   @Override
+  public boolean equals(Object user) {
+    return Objects.equals(this.id, ((User) user).getId());
+  }
+
+  @Override
   public String toString() {
     return "User{" +
         "id=" + id +
         ", name='" + name + '\'' +
-        ", login='" + login + '\'' +
+        ", email='" + email + '\'' +
         ", password='" + password + '\'' +
         '}';
   }

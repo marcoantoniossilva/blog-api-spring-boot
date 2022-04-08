@@ -2,7 +2,6 @@ package io.github.marcoantoniossilva.blog.api.model;
 
 import io.github.marcoantoniossilva.blog.api.model.input.UserIdDTO;
 
-import javax.persistence.PrePersist;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -49,8 +48,13 @@ public class AlbumDTO {
     this.imageList = imageList;
   }
 
+
   public LocalDateTime getPublicatedAt() {
     return publicatedAt;
+  }
+
+  public void setPublicatedAt(LocalDateTime publicatedAt) {
+    this.publicatedAt = publicatedAt;
   }
 
   public List<ImageUriDTO> getImageList() {

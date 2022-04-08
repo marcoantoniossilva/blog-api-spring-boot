@@ -1,6 +1,5 @@
 package io.github.marcoantoniossilva.blog.api.model;
 
-import io.github.marcoantoniossilva.blog.api.model.input.AlbumIdDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ImageInputDTO {

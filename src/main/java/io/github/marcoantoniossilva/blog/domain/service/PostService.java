@@ -1,6 +1,6 @@
 package io.github.marcoantoniossilva.blog.domain.service;
 
-import io.github.marcoantoniossilva.blog.common.SecurityUtils;
+import io.github.marcoantoniossilva.blog.security.SecurityUtils;
 import io.github.marcoantoniossilva.blog.domain.exception.ResourceNotFound;
 import io.github.marcoantoniossilva.blog.domain.exception.UnauthorizedException;
 import io.github.marcoantoniossilva.blog.domain.model.Post;

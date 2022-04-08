@@ -1,12 +1,12 @@
 package io.github.marcoantoniossilva.blog.api.model;
 
-public class UserDTO {
+public class UserLoginDTO {
 
   private Long id;
-  private String name;
   private String email;
+  private String password;
 
-  public UserDTO() {
+  public UserLoginDTO() {
   }
 
   public Long getId() {
@@ -17,12 +17,12 @@ public class UserDTO {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getPassword() {
+    return password;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public String getEmail() {

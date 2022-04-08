@@ -1,6 +1,6 @@
 package io.github.marcoantoniossilva.blog.domain.service;
 
-import io.github.marcoantoniossilva.blog.common.SecurityUtils;
+import io.github.marcoantoniossilva.blog.security.SecurityUtils;
 import io.github.marcoantoniossilva.blog.domain.exception.ResourceNotFound;
 import io.github.marcoantoniossilva.blog.domain.exception.UnauthorizedException;
 import io.github.marcoantoniossilva.blog.domain.model.Comment;
@@ -56,6 +56,13 @@ public class CommentService {
   @Transactional
   public void deleteById(Long commentId) {
     User loggedUser = SecurityUtils.getLoggedUser();
+
+    System.out.println(loggedUser);
+
+    Comment comment = commentRepository.findById(commentId).get();
+
+    System.out.println(loggedUser.equals(comment.getUser()));
+
     commentRepository.findById(commentId)
         .filter(savedComment -> savedComment.getUser().equals(loggedUser))
         .orElseThrow(() -> new UnauthorizedException("O comentário não pertence ao autor logado!"));

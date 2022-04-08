@@ -9,6 +9,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -50,6 +51,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     return handleExceptionInternal(ex, problem, headers, status, request);
   }
 
+  @ExceptionHandler(SizeLimitExceededException.class)
   protected ResponseEntity<Object> handleSizeLimitExceededException(
       SizeLimitExceededException ex,
       HttpHeaders headers, HttpStatus status,
@@ -98,6 +100,19 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     problem.setStatus(status.value());
     problem.setDateTime(LocalDateTime.now());
     problem.setTitle(ex.getMessage());
+
+    return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+  }
+
+  @ExceptionHandler(BadCredentialsException.class)
+  public ResponseEntity<Object> handleBadCredentialsException(BadCredentialsException ex, WebRequest request) {
+
+    HttpStatus status = HttpStatus.UNAUTHORIZED;
+
+    Problem problem = new Problem();
+    problem.setStatus(status.value());
+    problem.setDateTime(LocalDateTime.now());
+    problem.setTitle("Senha incorreta!");
 
     return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
   }
